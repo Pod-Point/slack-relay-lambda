@@ -70,7 +70,7 @@ var processEvent = function(event, context) {
             {
                 title: alarmName,
                 title_link: 'https://eu-west-1.console.aws.amazon.com/cloudwatch/home?region=eu-west-1#alarm:alarmFilter=inAlarm',
-                fallback: reason,
+                fallback: alarmName + ' has entered the state ' + newState,
                 text: reason + ' ' + emoji,
                 color: color,
                 ts: timestamp

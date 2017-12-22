@@ -1,5 +1,3 @@
-// Please remember to update this script in the git repo at https://github.com/Pod-Point/cloudwatch-slack-relay
-
 var AWS = require('aws-sdk');
 var url = require('url');
 var https = require('https');
@@ -52,14 +50,14 @@ var processEvent = function(event, context) {
     var color = 'warning';
     var emoji = ':neutral_face:';
     switch (newState) {
-    case 'OK':
-        color = 'good';
-        emoji = ':innocent:';
-        break;
-    case 'ALARM':
-        color = 'danger';
-        emoji = ':scream:';
-        break;
+        case 'OK':
+            color = 'good';
+            emoji = ':innocent:';
+            break;
+        case 'ALARM':
+            color = 'danger';
+            emoji = ':scream:';
+            break;
     }
 
     console.info(message);

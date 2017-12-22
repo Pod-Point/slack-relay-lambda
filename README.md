@@ -1,3 +1,3 @@
-# cloudwatch-slack-relay
+# slack-relay-lambda
 
-Lambda script that relays Cloudwatch alerts to Slack
+Lambda scripts that relay alerts to Slack

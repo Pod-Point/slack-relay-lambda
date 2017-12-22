@@ -1,0 +1,3 @@
+{
+  "extends": "@pod-point/eslint-config-podpoint-base"
+}

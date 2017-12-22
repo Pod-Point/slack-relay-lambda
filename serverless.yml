@@ -1,0 +1,9 @@
+service: slack-relay
+provider:
+  name: aws
+  runtime: nodejs6.10
+functions:
+  cloudwatch:
+    handler: src/cloudwatch.handler
+plugins:
+  - serverless-webpack

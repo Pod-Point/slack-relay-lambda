@@ -6,7 +6,7 @@ var https = require('https');
 var hookUrl, kmsEncyptedHookUrl, slackChannel;
 
 kmsEncyptedHookUrl = 'CiAdYuHo9YVqpH25XjTQyq/8ep7ixdreArIHRWGFYjvEyxLQAQEBAgB4HWLh6PWFaqR9uV400Mqv/Hqe4sXa3gKyB0VhhWI7xMsAAACnMIGkBgkqhkiG9w0BBwaggZYwgZMCAQAwgY0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMjElsa6tOuFEkqSUEAgEQgGAekpqlRkvFfckMHChJ2b6PJXt0wqH8xTI7C5txgDwSp6pCeyN2LxZdaoruDZP+bImlwHG5pH1xrIHHBReX0XYtB3KDkMOtNAjWAGziiYr15LdzwwSNvPZn5m26p81oAvU=';  // Enter the base-64 encoded, encrypted key (CiphertextBlob)
-slackChannel = '#software-dev';
+slackChannel = '#software-devs-team';
 
 var postMessage = function(message, callback) {
     var body = JSON.stringify(message);
@@ -62,7 +62,7 @@ var processEvent = function(event, context) {
         break;
     }
 
-    console.info(message.AlarmName);
+    console.info(message);
 
     var slackMessage = {
         channel: slackChannel,

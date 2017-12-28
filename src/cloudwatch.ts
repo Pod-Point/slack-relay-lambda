@@ -1,12 +1,12 @@
 import { decryptString } from './lib/kms';
 import { postMessage } from './lib/slack';
 
-var hookUrl, kmsEncyptedHookUrl, slackChannel;
+let hookUrl, kmsEncyptedHookUrl, slackChannel;
 
 kmsEncyptedHookUrl = 'CiAdYuHo9YVqpH25XjTQyq/8ep7ixdreArIHRWGFYjvEyxLQAQEBAgB4HWLh6PWFaqR9uV400Mqv/Hqe4sXa3gKyB0VhhWI7xMsAAACnMIGkBgkqhkiG9w0BBwaggZYwgZMCAQAwgY0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMjElsa6tOuFEkqSUEAgEQgGAekpqlRkvFfckMHChJ2b6PJXt0wqH8xTI7C5txgDwSp6pCeyN2LxZdaoruDZP+bImlwHG5pH1xrIHHBReX0XYtB3KDkMOtNAjWAGziiYr15LdzwwSNvPZn5m26p81oAvU=';  // Enter the base-64 encoded, encrypted key (CiphertextBlob)
 slackChannel = '#software-devs-team';
 
-var processEvent = (event, context) => {
+const processEvent = (event, context) => {
     const message = JSON.parse(event.Records[0].Sns.Message);
 
     const alarmName = message.AlarmName;
@@ -48,8 +48,7 @@ var processEvent = (event, context) => {
     });
 };
 
-
-exports.handler = (event, context) => {
+export const handler = (event, context) => {
     if (hookUrl) {
         return processEvent(event, context);
     }

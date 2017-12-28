@@ -1,13 +1,17 @@
-import https from 'https';
-import url from 'url';
+import * as https from 'https';
+import * as url from 'url';
 
 export const postMessage = (hookUrl, message) => new Promise((resolve, reject) => {
     const postData = JSON.stringify(message);
-    const options = url.parse(hookUrl);
-    options.method = 'POST';
-    options.headers = {
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(postData),
+    const theUrl = url.parse(hookUrl);
+
+    const options = {
+        host: theUrl.host,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(postData),
+        },
     };
 
     const postReq = https.request(options, res => {
@@ -16,11 +20,11 @@ export const postMessage = (hookUrl, message) => new Promise((resolve, reject) =
         }
         let body = [];
         res.on('data', chunk => {
-            chunks.push(chunk);
+            body.push(chunk);
         });
         res.on('end', () => {
             try {
-                body = JSON.parse(Buffer.concat(chunks).toString());
+                body = JSON.parse(Buffer.concat(body).toString());
             } catch(e) {
                 reject(e);
             }

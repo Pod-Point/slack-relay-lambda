@@ -8,14 +8,13 @@
   },
   "license": "proprietary",
   "devDependencies": {
-    "@pod-point/eslint-config-podpoint-base": "^0.1.9",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "babel-loader": "^7.1.2",
-    "eslint": "^4.13.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^8.5.2",
     "serverless-webpack": "^4.2.0",
+    "ts-loader": "^3.2.0",
+    "tslint": "^5.8.0",
+    "tslint-config-airbnb": "^5.4.2",
+    "typescript": "^2.6.2",
     "webpack": "^3.10.0"
   },
   "dependencies": {

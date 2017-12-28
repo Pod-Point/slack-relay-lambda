@@ -1,4 +1,4 @@
-import AWS from 'aws-sdk';
+import * as AWS from 'aws-sdk';
 
 export const decryptString = kmsEncyptedString => new Promise((resolve, reject) => {
     const encryptedBuf = new Buffer(kmsEncyptedString, 'base64');
@@ -7,9 +7,9 @@ export const decryptString = kmsEncyptedString => new Promise((resolve, reject) 
 
     kms.decrypt(cipherText, (err, data) => {
         if (err) {
-            reject(err);
-        } else {
-            resolve(data.Plaintext.toString('ascii'));
+            return reject(err);
         }
+
+        resolve(data.Plaintext.toString());
     });
 });

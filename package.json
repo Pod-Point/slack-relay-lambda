@@ -5,11 +5,19 @@
     "type": "git",
     "url": "https://github.com/Pod-Point/slack-relay-lambda"
   },
+  "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "pretest": "npm run lint",
+    "test": "jest"
+  },
   "license": "proprietary",
   "devDependencies": {
     "@types/aws-lambda": "0.0.24",
+    "@types/jest": "^22.0.0",
     "@types/node": "^8.5.2",
+    "jest": "^22.0.4",
     "serverless-webpack": "^4.2.0",
+    "ts-jest": "^22.0.0",
     "ts-loader": "^3.2.0",
     "tslint": "^5.8.0",
     "tslint-config-airbnb": "^5.4.2",
@@ -18,5 +26,31 @@
   },
   "dependencies": {
     "aws-sdk": "^2.174.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "collectCoverage": true,
+    "mapCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts",
+      "!**/node_modules/**",
+      "!**/__mocks__/**",
+      "!**/__tests__/**"
+    ],
+    "coverageReporters": [
+      "lcov"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

@@ -1,3 +1,4 @@
+import { Context, SNSEvent } from 'aws-lambda';
 import { postMessage, formatCloudwatchMessage, formatEventMessage } from './lib/slack';
 import { SlackMessage } from './interfaces/slack';
 
@@ -7,7 +8,7 @@ import { SlackMessage } from './interfaces/slack';
  * @param event
  * @param context
  */
-export function handler(event: any, context: any): void {
+export function handler(event: SNSEvent, context: Context): void {
     let slackMessage: SlackMessage;
     const message: any = JSON.parse(event.Records[0].Sns.Message);
 
@@ -17,8 +18,8 @@ export function handler(event: any, context: any): void {
         slackMessage = formatEventMessage(message);
     }
 
-    postMessage(process.env.HOOK_URL, slackMessage).then(() => {
-        context.succeed();
+    postMessage(process.env.HOOK_URL, slackMessage).then(message => {
+        context.succeed(message);
     }).catch(err => {
         context.fail(err);
     });

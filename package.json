@@ -8,8 +8,8 @@
   },
   "license": "proprietary",
   "devDependencies": {
+    "@types/aws-lambda": "0.0.24",
     "@types/node": "^8.5.2",
-    "aws-sdk": "^2.175.0",
     "serverless-webpack": "^4.2.0",
     "ts-loader": "^3.2.0",
     "tslint": "^5.8.0",

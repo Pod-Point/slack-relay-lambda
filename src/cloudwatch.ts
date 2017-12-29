@@ -1,7 +1,9 @@
 import { postMessage } from './lib/slack';
+import { SlackMessage } from './interfaces/slack';
+import { SnsMessage } from './interfaces/sns';
 
 export function handler(event, context) {
-    const message = JSON.parse(event.Records[0].Sns.Message);
+    const message: SnsMessage = JSON.parse(event.Records[0].Sns.Message);
 
     const alarmName: string = message.AlarmName;
     const newState: string = message.NewStateValue;
@@ -21,7 +23,7 @@ export function handler(event, context) {
             break;
     }
 
-    const slackMessage = {
+    const slackMessage: SlackMessage = {
         channel: process.env.SLACK_CHANNEL,
         attachments: [
             {

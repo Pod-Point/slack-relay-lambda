@@ -16,7 +16,7 @@ provider:
     HOOK_URL: ${env:HOOK_URL, file(./.env.yml):HOOK_URL}
     SLACK_CHANNEL: ${env:SLACK_CHANNEL, file(./.env.yml):SLACK_CHANNEL}
 functions:
-  cloudwatch:
-    handler: src/cloudwatch.handler
+  sns:
+    handler: src/sns.handler
 plugins:
   - serverless-webpack

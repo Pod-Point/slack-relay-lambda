@@ -1,6 +1,12 @@
 import * as AWS from 'aws-sdk';
 
-export function decryptString(encyptedString){
+/**
+ * Decrypt a string with KMS.
+ *
+ * @param {string} encyptedString
+ * @returns {Promise<string>}
+ */
+export function decryptString(encyptedString: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
         const encryptedBuf: Buffer = new Buffer(encyptedString, 'base64');
         const cipherText: AWS.KMS.Types.DecryptRequest = {

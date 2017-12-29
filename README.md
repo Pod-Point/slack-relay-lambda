@@ -6,4 +6,4 @@ Lambda scripts that relay alerts to Slack
 * `serverless deploy --stage production`
 
 ### Testing
-* `serverless invoke local --function sns -p test/event.json`
+* `serverless invoke local --function sns -p __tests__/data/event.json`

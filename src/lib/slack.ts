@@ -2,6 +2,8 @@ import * as https from 'https';
 import * as url from 'url';
 import { SlackMessage } from '../interfaces/slack';
 import { CloudwatchMessage, EventMessage } from '../interfaces/sns';
+import { CLOUDWATCH_OK, CLOUDWATCH_ALARM } from '../constants/cloudwatch';
+import { HTTP_OK, HTTP_MULTIPLE_CHOICES } from '../constants/http';
 
 /**
  * Post a message to a Slack webhook url.
@@ -26,7 +28,7 @@ export function postMessage(hookUrl: string, message: SlackMessage): Promise<str
         };
 
         const postReq = https.request(options, res => {
-            if (res.statusCode < 200 || res.statusCode >= 300) {
+            if (res.statusCode < HTTP_OK || res.statusCode >= HTTP_MULTIPLE_CHOICES) {
                 return reject(`Error posting message to Slack API: ${res.statusCode} ${res.statusMessage}`);
             }
             const body: any[] = [];
@@ -60,11 +62,11 @@ export function formatCloudwatchMessage(message: CloudwatchMessage): SlackMessag
     let color: string = 'warning';
     let emoji: string = ':neutral_face:';
     switch (newState) {
-        case 'OK':
+        case CLOUDWATCH_OK:
             color = 'good';
             emoji = ':innocent:';
             break;
-        case 'ALARM':
+        case CLOUDWATCH_ALARM:
             color = 'danger';
             emoji = ':scream:';
             break;

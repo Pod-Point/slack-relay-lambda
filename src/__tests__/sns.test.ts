@@ -1,6 +1,6 @@
 import * as https from 'https';
 import { handler } from '../sns';
-import * as cloudwatch from '../../test/cloudwatch.json';
+import * as cloudwatch from './data/cloudwatch.json';
 
 jest.mock('https');
 

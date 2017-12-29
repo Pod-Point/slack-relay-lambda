@@ -18,5 +18,6 @@ provider:
 functions:
   sns:
     handler: src/sns.handler
+    description: Relay SNS events to Slack
 plugins:
   - serverless-webpack

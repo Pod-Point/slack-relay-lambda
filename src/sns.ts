@@ -17,7 +17,8 @@ export function handler(event: SNSEvent, context: Context): void {
     } else if (message.hasOwnProperty('Event Source')) {
         slackMessage = formatEventMessage(message);
     } else {
-        context.fail(event);
+        console.log(event);
+        context.fail('Unknown event type');
     }
 
     postMessage(process.env.HOOK_URL, slackMessage).then(message => {

@@ -1,7 +1,20 @@
 service: slack-relay
 provider:
   name: aws
+  defaultStage: staging
+  stage: ${env:STAGE, self:provider.defaultStage, opt:stage}
+  role: ${env:AWS_ROLE, file(./.env.yml):AWS_ROLE}
   runtime: nodejs6.10
+  region: ${env:APP_AWS_REGION, file(./.env.yml):APP_AWS_REGION}
+  vpc:
+    securityGroupIds:
+      - sg-4cd7922b
+    subnetIds:
+      - subnet-2415dc7c
+      - subnet-a8cc44cc
+  environment:
+    HOOK_URL: ${env:HOOK_URL, file(./.env.yml):HOOK_URL}
+    SLACK_CHANNEL: ${env:SLACK_CHANNEL, file(./.env.yml):SLACK_CHANNEL}
 functions:
   cloudwatch:
     handler: src/cloudwatch.handler

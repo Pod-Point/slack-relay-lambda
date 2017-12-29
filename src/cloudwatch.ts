@@ -1,21 +1,15 @@
-import { decryptString } from './lib/kms';
 import { postMessage } from './lib/slack';
 
-let hookUrl, kmsEncyptedHookUrl, slackChannel;
-
-kmsEncyptedHookUrl = 'CiAdYuHo9YVqpH25XjTQyq/8ep7ixdreArIHRWGFYjvEyxLQAQEBAgB4HWLh6PWFaqR9uV400Mqv/Hqe4sXa3gKyB0VhhWI7xMsAAACnMIGkBgkqhkiG9w0BBwaggZYwgZMCAQAwgY0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMjElsa6tOuFEkqSUEAgEQgGAekpqlRkvFfckMHChJ2b6PJXt0wqH8xTI7C5txgDwSp6pCeyN2LxZdaoruDZP+bImlwHG5pH1xrIHHBReX0XYtB3KDkMOtNAjWAGziiYr15LdzwwSNvPZn5m26p81oAvU=';  // Enter the base-64 encoded, encrypted key (CiphertextBlob)
-slackChannel = '#software-devs-team';
-
-const processEvent = (event, context) => {
+export function handler(event, context) {
     const message = JSON.parse(event.Records[0].Sns.Message);
 
-    const alarmName = message.AlarmName;
-    const newState = message.NewStateValue;
-    const reason = `<!channel> Check has entered the state ${newState}`;
-    const timestamp = (new Date(message.StateChangeTime).getTime() / 1000).toFixed(0);
+    const alarmName: string = message.AlarmName;
+    const newState: string = message.NewStateValue;
+    const reason: string = `<!channel> Check has entered the state ${newState}`;
+    const timestamp: string = (new Date(message.StateChangeTime).getTime() / 1000).toFixed(0);
 
-    let color = 'warning';
-    let emoji = ':neutral_face:';
+    let color: string = 'warning';
+    let emoji: string = ':neutral_face:';
     switch (newState) {
         case 'OK':
             color = 'good';
@@ -28,7 +22,7 @@ const processEvent = (event, context) => {
     }
 
     const slackMessage = {
-        channel: slackChannel,
+        channel: process.env.SLACK_CHANNEL,
         attachments: [
             {
                 title: alarmName,
@@ -41,23 +35,9 @@ const processEvent = (event, context) => {
         ]
     };
 
-    postMessage(hookUrl, slackMessage).then(() => {
+    postMessage(process.env.HOOK_URL, slackMessage).then(() => {
         context.succeed();
     }).catch(err => {
         context.fail(err);
     });
-};
-
-export const handler = (event, context) => {
-    if (hookUrl) {
-        return processEvent(event, context);
-    }
-
-    decryptString(kmsEncyptedHookUrl).then(decryptedString => {
-        hookUrl = `https://${decryptedString}`;
-
-        return processEvent(event, context);
-    }).catch(err => {
-        context.fail(err);
-    })
-};
+}

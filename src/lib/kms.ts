@@ -10,7 +10,7 @@ export function decryptString(encyptedString: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
         const encryptedBuf: Buffer = new Buffer(encyptedString, 'base64');
         const cipherText: AWS.KMS.Types.DecryptRequest = {
-            CiphertextBlob: encryptedBuf
+            CiphertextBlob: encryptedBuf,
         };
         const kms: AWS.KMS = new AWS.KMS();
 

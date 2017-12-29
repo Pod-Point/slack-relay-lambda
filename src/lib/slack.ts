@@ -74,14 +74,14 @@ export function formatCloudwatchMessage(message: CloudwatchMessage): SlackMessag
         channel: process.env.SLACK_CHANNEL,
         attachments: [
             {
+                color,
                 title: alarmName,
                 title_link: 'https://eu-west-1.console.aws.amazon.com/cloudwatch/home?region=eu-west-1#alarm:alarmFilter=inAlarm',
                 fallback: `${alarmName} has entered the state ${newState}`,
                 text: `${reason} ${emoji}`,
-                color: color,
-                ts: timestamp
-            }
-        ]
+                ts: timestamp,
+            },
+        ],
     };
 }
 
@@ -104,7 +104,7 @@ export function formatEventMessage(message: EventMessage): SlackMessage {
                 text: message['Event Message'],
                 color: 'warning',
                 ts: timestamp,
-            }
-        ]
+            },
+        ],
     };
 }

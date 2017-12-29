@@ -16,6 +16,8 @@ export function handler(event: SNSEvent, context: Context): void {
         slackMessage = formatCloudwatchMessage(message);
     } else if (message.hasOwnProperty('Event Source')) {
         slackMessage = formatEventMessage(message);
+    } else {
+        context.fail(event);
     }
 
     postMessage(process.env.HOOK_URL, slackMessage).then(message => {

@@ -1,12 +1,3 @@
 {
-  "extends": "tslint-config-airbnb",
-  "rules": {
-    "ter-indent": [
-      true, 4, {"SwitchCase": true}
-    ],
-      "ter-arrow-parens": [
-        true, "as-needed"
-    ],
-    "max-line-length": [true, 160]
-  }
+  "extends": "@pod-point/tslint-config-podpoint-base"
 }

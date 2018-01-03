@@ -1,0 +1,21 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:EXAMPLE",
+      "Sns": {
+        "Type":"Notification",
+        "MessageId":"1cf7a0eb-4179-4181-b15b-ea22c5aa0280",
+        "TopicArn":"arn:aws:sns:us-east-1:089311581210:CloudWatchHTTPAlarms",
+        "Subject":"ALARM: \"cpuUtilTest\" in US - N. Virginia",
+        "Message":"{\"Event Source\":\"db-instance\",\"Event Time\":\"2014-10-28 08:13:15.339\",\"Identifier Link\":\"https://console.aws.amazon.com/rds/home?region=us-east-1#\",\"Source ID\": \"aydentifayir\",\"Event ID\":\"http://docs.amazonwebservices.com/AmazonRDS/latest/UserGuide/USER_Events.html#RDS-EVENT-0019\",\"Event Message\":\"Restored from DB instance mydbinstins to 2014-10-28 08:00:00.0\"}",
+        "Timestamp":"2012-08-05T22:31:30.673Z",
+        "SignatureVersion":"1",
+        "Signature":"XrsO2wtE0b+ofOl1Z85tqLqQn1fMuv07uRttlimTUg+rV4U9RmNSSBEdlmyWvtGgpjebsmNv1wkjUsBQOJZjZnpZp5FBn6quAn3twNdRMmMLf15lv6ESbYF8mpFHwmMhgWVkgq60vmjj/ZLwiH9Pr/cxVYOR0aPQBPDwTYn8w6g=",
+        "SigningCertURL":"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
+        "UnsubscribeURL":"https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:089311581210:CloudWatchHTTPAlarms:1841c5ca-ddda-450e-bbfb-bf0cf15813db"
+      }
+    }
+  ]
+}

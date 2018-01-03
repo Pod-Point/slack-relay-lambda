@@ -7,3 +7,4 @@ jspm_packages
 .webpack
 .env.yml
 /coverage
+npm-debug.log

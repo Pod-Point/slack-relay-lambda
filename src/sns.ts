@@ -19,7 +19,7 @@ export function handler(event: SNSEvent, context: Context, callback: Callback): 
         slackMessage = formatEventMessage(message);
     } else {
         console.log(event);
-        callback('Unknown event type');
+        callback(new Error('Unknown event type'));
     }
 
     postMessage(process.env.HOOK_URL, slackMessage).then(message => {

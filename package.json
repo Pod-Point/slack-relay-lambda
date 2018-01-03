@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "pretest": "npm run lint",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc --noEmit --pretty"
   },
   "license": "proprietary",
   "devDependencies": {

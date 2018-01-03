@@ -19,8 +19,5 @@ functions:
   sns:
     handler: src/sns.handler
     description: Relay SNS events to Slack
-    events:
-      - sns: arn:aws:sns:eu-west-1:959744386191:software-slack
-      - sns: arn:aws:sns:us-east-1:959744386191:software-slack-us
 plugins:
   - serverless-webpack

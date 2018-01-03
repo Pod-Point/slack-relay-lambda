@@ -1,0 +1,3 @@
+{
+  "extends": "@pod-point/tslint-config-podpoint-base"
+}

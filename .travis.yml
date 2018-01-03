@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 6
+sudo: false
+before_script:
+  - npm run lint
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+cache:
+  directories:
+    - node_modules

@@ -1,5 +1,7 @@
 # slack-relay-lambda
 
+[![Build Status](https://travis-ci.com/Pod-Point/slack-relay-lambda.svg?token=F7wj2GWZpNRsZSDUXLya&branch=serverless)](https://travis-ci.com/Pod-Point/slack-relay-lambda) [![codecov](https://codecov.io/gh/Pod-Point/slack-relay-lambda/branch/master/graph/badge.svg?token=ssI847pEqw)](https://codecov.io/gh/Pod-Point/slack-relay-lambda)
+
 Lambda scripts that relay alerts to Slack
 
 ### Deploy

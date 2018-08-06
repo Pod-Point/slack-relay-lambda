@@ -33,8 +33,9 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "verbose": true,
+    "testEnvironment": "node",
     "collectCoverage": true,
-    "mapCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.ts",
       "!src/**/*.d.ts",

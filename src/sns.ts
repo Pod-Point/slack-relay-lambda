@@ -15,7 +15,7 @@ export function handler(event: SNSEvent, context: Context, callback: Callback): 
 
     if (message.hasOwnProperty('AlarmName')) {
         slackMessage = formatCloudwatchMessage(message);
-    } else if (message.hasOwnProperty('Event Source')) {
+    } else if (message.hasOwnProperty('EventSource')) {
         slackMessage = formatEventMessage(message);
     } else {
         console.log(event);

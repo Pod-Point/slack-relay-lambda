@@ -4,7 +4,7 @@ provider:
   defaultStage: staging
   stage: ${env:STAGE, self:provider.defaultStage, opt:stage}
   role: ${env:AWS_ROLE, file(./.env.yml):AWS_ROLE}
-  runtime: nodejs6.10
+  runtime: nodejs10.16
   region: ${env:APP_AWS_REGION, file(./.env.yml):APP_AWS_REGION}
   vpc:
     securityGroupIds:

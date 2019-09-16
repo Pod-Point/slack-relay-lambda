@@ -6,8 +6,8 @@
     "url": "https://github.com/Pod-Point/slack-relay-lambda"
   },
   "engines": {
-    "node": "10.16.3",
-    "npm": "6.9.0"
+    "node": ">=10.16",
+    "npm": ">=6.9"
   },
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
